@@ -52,7 +52,7 @@ public class Game {
       Colour powerColour = Colour.getRandomColourForPowerColour();
       MessageCli.PRINT_POWER_COLOUR.printMessage(powerColour);
 
-      // Check if the AI or human guessed the power colour
+      // Check if the AI or human guessed the power colour for bonus points
       if (human.getGuess() == powerColour && ai.getColour() == powerColour) {
         humanPoints += 2;
       }

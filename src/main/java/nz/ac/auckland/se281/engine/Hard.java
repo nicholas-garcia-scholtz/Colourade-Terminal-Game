@@ -26,8 +26,11 @@ public class Hard implements Level {
       return strat;
     }
     // Ai lost so switch to other strategy
-    if (strat instanceof LeastUsedColourStrategy) strat = new AvoidLastColourStrategy(stats);
-    if (strat instanceof AvoidLastColourStrategy) strat = new LeastUsedColourStrategy(stats);
+    if (strat instanceof LeastUsedColourStrategy) {
+      strat = new AvoidLastColourStrategy(stats);
+    } else {
+      strat = new LeastUsedColourStrategy(stats);
+    }
     return strat;
   }
 }
