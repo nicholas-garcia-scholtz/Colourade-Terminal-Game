@@ -7,10 +7,9 @@ import nz.ac.auckland.se281.model.Colour;
 public class Ai extends Player {
   private Strategy strat;
   private Level level;
-  private String name;
 
   public Ai(Difficulty difficulty, String name) {
-    super();
+    super(name);
     this.level = LevelFactory.createLevel(difficulty);
     this.name = name;
   }

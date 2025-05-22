@@ -5,6 +5,11 @@ import nz.ac.auckland.se281.model.Colour;
 public abstract class Player {
   protected Colour colour;
   protected Colour guess;
+  protected String name;
+
+  public Player(String name) {
+    this.name = name;
+  }
 
   abstract void play();
 

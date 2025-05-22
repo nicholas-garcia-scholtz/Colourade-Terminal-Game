@@ -5,11 +5,9 @@ import nz.ac.auckland.se281.cli.Utils;
 import nz.ac.auckland.se281.model.Colour;
 
 public class Human extends Player {
-  private String name;
 
   public Human(String name) {
-    super();
-    this.name = name;
+    super(name);
   }
 
   @Override
