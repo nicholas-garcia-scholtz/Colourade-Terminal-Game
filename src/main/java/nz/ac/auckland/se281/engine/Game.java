@@ -12,9 +12,7 @@ public class Game {
   private int numRounds;
   private int currentRound;
   private boolean gameStarted = false;
-  private GameStats stats = new GameStats();
-
-  public Game() {}
+  private GameStats stats;
 
   public void newGame(Difficulty difficulty, int numRounds, String[] options) {
     String namePlayer = options[0];
@@ -22,6 +20,7 @@ public class Game {
 
     // Intitialise/Reset all variables
     this.numRounds = numRounds;
+    stats = new GameStats();
     currentRound = 0;
     human = new Human(namePlayer);
     ai = new Ai(difficulty, AI_NAME, stats);
