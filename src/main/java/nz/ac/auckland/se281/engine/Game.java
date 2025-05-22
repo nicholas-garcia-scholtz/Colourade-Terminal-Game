@@ -2,6 +2,7 @@ package nz.ac.auckland.se281.engine;
 
 import nz.ac.auckland.se281.Main.Difficulty;
 import nz.ac.auckland.se281.cli.MessageCli;
+import nz.ac.auckland.se281.model.Colour;
 
 public class Game {
   public static String AI_NAME = "HAL-9000";
@@ -31,6 +32,11 @@ public class Game {
     currentRound++;
     MessageCli.START_ROUND.printMessage(currentRound, numRounds);
     human.play();
+
+    if (currentRound % 3 == 0) {
+      Colour powerColour = Colour.getRandomColourForPowerColour();
+      MessageCli.PRINT_POWER_COLOUR.printMessage(powerColour);
+    }
   }
 
   public void showStats() {}
