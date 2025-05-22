@@ -1,0 +1,18 @@
+package nz.ac.auckland.se281.engine;
+
+import nz.ac.auckland.se281.Main.Difficulty;
+
+public class LevelFactory {
+
+  public static Level createLevel(Difficulty difficulty) {
+
+    switch (difficulty) {
+      case EASY:
+        return new Easy();
+      default:
+        break;
+    }
+
+    return null;
+  }
+}
