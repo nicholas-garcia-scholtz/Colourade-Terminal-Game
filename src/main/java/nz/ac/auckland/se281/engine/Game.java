@@ -11,6 +11,11 @@ public class Game {
   public void newGame(Difficulty difficulty, int numRounds, String[] options) {
     String namePlayer = options[0];
     MessageCli.WELCOME_PLAYER.printMessage(namePlayer);
+    GameStats stats = new GameStats();
+
+    for (int i = 1; i < numRounds + 1; i++) {
+      MessageCli.START_ROUND.printMessage(i, numRounds);
+    }
   }
 
   public void play() {}
