@@ -8,9 +8,9 @@ public class Ai extends Player {
   private Strategy strat;
   private Level level;
 
-  public Ai(Difficulty difficulty, String name) {
+  public Ai(Difficulty difficulty, String name, GameStats stats) {
     super(name);
-    this.level = LevelFactory.createLevel(difficulty);
+    this.level = LevelFactory.createLevel(difficulty, stats);
     this.name = name;
   }
 

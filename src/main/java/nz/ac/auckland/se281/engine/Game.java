@@ -12,7 +12,7 @@ public class Game {
   private int numRounds;
   private int currentRound;
   private boolean gameStarted = false;
-  private GameStats stats;
+  private GameStats stats = new GameStats();
 
   public Game() {}
 
@@ -21,9 +21,8 @@ public class Game {
     MessageCli.WELCOME_PLAYER.printMessage(namePlayer);
     this.numRounds = numRounds;
     currentRound = 0;
-    stats = new GameStats();
     human = new Human(namePlayer);
-    ai = new Ai(difficulty, AI_NAME);
+    ai = new Ai(difficulty, AI_NAME, stats);
     gameStarted = true;
   }
 
