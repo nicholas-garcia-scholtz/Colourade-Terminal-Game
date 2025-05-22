@@ -89,6 +89,9 @@ public class Game {
   public void showStats() {
     if (!gameStarted) {
       MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
     }
+    MessageCli.PRINT_PLAYER_POINTS.printMessage(human.getName(), human.getPoints());
+    MessageCli.PRINT_PLAYER_POINTS.printMessage(ai.getName(), ai.getPoints());
   }
 }
