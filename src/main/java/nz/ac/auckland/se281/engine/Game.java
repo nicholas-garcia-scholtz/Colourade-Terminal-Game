@@ -20,7 +20,7 @@ public class Game {
     MessageCli.WELCOME_PLAYER.printMessage(namePlayer);
     this.numRounds = numRounds;
     human = new Human(namePlayer);
-    ai = new Ai();
+    ai = new Ai(difficulty, AI_NAME);
     gameStarted = true;
   }
 

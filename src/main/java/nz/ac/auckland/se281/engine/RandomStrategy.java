@@ -5,7 +5,7 @@ import nz.ac.auckland.se281.model.Colour;
 public class RandomStrategy implements Strategy {
 
   @Override
-  public Colour[] getColours() {
+  public Colour[] decideColours() {
     return new Colour[] {Colour.getRandomColourForAi(), Colour.getRandomColourForAi()};
   }
 }
