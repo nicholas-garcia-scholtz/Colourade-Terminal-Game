@@ -75,6 +75,9 @@ public class Game {
     ai.wonPoints(aiPoints);
     MessageCli.PRINT_OUTCOME_ROUND.printMessage(ai.getName(), aiPoints);
 
+    // Check if the AI won points - the strategy used by the hard level depends on this
+    stats.aiWonPoints(aiPoints);
+
     if (currentRound == numRounds) {
       // End the game after all rounds finish
       gameStarted = false;

@@ -15,6 +15,11 @@ public class GameStats {
     return humanColourHistory.get(humanColourHistory.size() - 1);
   }
 
+  public boolean aiWonPoints(int points) {
+    if (points == 0) return false;
+    return true;
+  }
+
   public void clearColourHistory() {
     humanColourHistory.clear();
     redCount = 0;
