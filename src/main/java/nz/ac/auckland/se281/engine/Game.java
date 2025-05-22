@@ -86,5 +86,9 @@ public class Game {
     }
   }
 
-  public void showStats() {}
+  public void showStats() {
+    if (!gameStarted) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+    }
+  }
 }
