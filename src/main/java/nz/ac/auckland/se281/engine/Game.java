@@ -80,14 +80,29 @@ public class Game {
 
     if (currentRound == numRounds) {
       // End the game after all rounds finish
+      showStats();
+      MessageCli.PRINT_END_GAME.printMessage();
+      Player playerWon = null;
+      if (human.getPoints() > ai.getPoints()) {
+        playerWon = human;
+      } else if (ai.getPoints() > human.getPoints()) {
+        playerWon = ai;
+      }
+
+      if (playerWon == null) {
+        // Its a tie
+        MessageCli.PRINT_TIE_GAME.printMessage();
+      } else {
+        MessageCli.PRINT_WINNER_GAME.printMessage(playerWon.getName());
+      }
       gameStarted = false;
       stats.clearColourHistory();
-      MessageCli.PRINT_END_GAME.printMessage();
     }
   }
 
   public void showStats() {
     if (!gameStarted) {
+      // Game has not started so exit
       MessageCli.GAME_NOT_STARTED.printMessage();
       return;
     }
