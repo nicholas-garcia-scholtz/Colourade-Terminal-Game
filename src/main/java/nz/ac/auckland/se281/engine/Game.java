@@ -10,20 +10,24 @@ public class Game {
   private Player ai;
   private int numRounds;
   private int currentRound;
+  private boolean gameStarted = false;
 
   public Game() {}
 
   public void newGame(Difficulty difficulty, int numRounds, String[] options) {
     String namePlayer = options[0];
     MessageCli.WELCOME_PLAYER.printMessage(namePlayer);
-    GameStats stats = new GameStats();
     this.numRounds = numRounds;
-    currentRound = 0;
     human = new Human(namePlayer);
     ai = new Ai();
+    gameStarted = true;
   }
 
   public void play() {
+    if (!gameStarted) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
     currentRound++;
     MessageCli.START_ROUND.printMessage(currentRound, numRounds);
     human.play();
