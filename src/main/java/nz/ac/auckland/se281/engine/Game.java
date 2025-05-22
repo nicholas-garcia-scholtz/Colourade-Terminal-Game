@@ -11,10 +11,7 @@ public class Game {
   private int numRounds;
   private int currentRound;
 
-  public Game() {
-    human = new Human();
-    ai = new Ai();
-  }
+  public Game() {}
 
   public void newGame(Difficulty difficulty, int numRounds, String[] options) {
     String namePlayer = options[0];
@@ -22,6 +19,8 @@ public class Game {
     GameStats stats = new GameStats();
     this.numRounds = numRounds;
     currentRound = 0;
+    human = new Human(namePlayer);
+    ai = new Ai();
   }
 
   public void play() {

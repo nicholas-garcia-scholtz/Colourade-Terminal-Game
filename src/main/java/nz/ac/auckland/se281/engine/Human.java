@@ -5,6 +5,13 @@ import nz.ac.auckland.se281.cli.Utils;
 import nz.ac.auckland.se281.model.Colour;
 
 public class Human extends Player {
+  private String name;
+
+  public Human(String name) {
+    super();
+    this.name = name;
+  }
+
   @Override
   public void play() {
     int iteration = 1;
@@ -22,5 +29,7 @@ public class Human extends Player {
       colour = Colour.fromInput(input[0]);
       guess = Colour.fromInput(input[1]);
     } while (colour == null || guess == null);
+
+    MessageCli.PRINT_INFO_MOVE.printMessage(name, colour, guess);
   }
 }
