@@ -10,6 +10,7 @@ public class Medium implements Level {
   @Override
   public Strategy decideStrategy() {
     if (stats.getHumanColourHistorySize() == 0) {
+      // First round so no human inputs in this game yet
       return new RandomStrategy();
     }
     return new AvoidLastColourStrategy(stats);

@@ -19,6 +19,8 @@ public class Game {
   public void newGame(Difficulty difficulty, int numRounds, String[] options) {
     String namePlayer = options[0];
     MessageCli.WELCOME_PLAYER.printMessage(namePlayer);
+
+    // Intitialise/Reset all variables
     this.numRounds = numRounds;
     currentRound = 0;
     human = new Human(namePlayer);
@@ -33,15 +35,24 @@ public class Game {
       MessageCli.GAME_NOT_STARTED.printMessage();
       return;
     }
+
     currentRound++;
     MessageCli.START_ROUND.printMessage(currentRound, numRounds);
+
+    // Human and the AI take their turns
     human.play();
     ai.play();
+
+    // Add the selected colour by human to the history of the game to change future stategies by the
+    // AI
     stats.addHumanColour(human.getColour());
 
     if (currentRound % 3 == 0) {
+      // Power colour round
       Colour powerColour = Colour.getRandomColourForPowerColour();
       MessageCli.PRINT_POWER_COLOUR.printMessage(powerColour);
+
+      // Check if the AI or human guessed the power colour
       if (human.getGuess() == powerColour) {
         humanPoints += 2;
       }
@@ -50,20 +61,22 @@ public class Game {
       }
     }
 
+    // Check if the AI or human guessed on another's colour
     if (human.getGuess() == ai.getColour()) {
       humanPoints++;
     }
-
     if (ai.getGuess() == human.getColour()) {
       aiPoints++;
     }
 
+    // Add points
     human.wonPoints(humanPoints);
     MessageCli.PRINT_OUTCOME_ROUND.printMessage(human.getName(), humanPoints);
     ai.wonPoints(aiPoints);
     MessageCli.PRINT_OUTCOME_ROUND.printMessage(ai.getName(), aiPoints);
 
     if (currentRound == numRounds) {
+      // End the game after all rounds finish
       gameStarted = false;
       stats.clearColourHistory();
       MessageCli.PRINT_END_GAME.printMessage();
