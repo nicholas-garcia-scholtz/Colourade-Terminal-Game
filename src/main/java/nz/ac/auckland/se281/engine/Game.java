@@ -19,6 +19,7 @@ public class Game {
     String namePlayer = options[0];
     MessageCli.WELCOME_PLAYER.printMessage(namePlayer);
     this.numRounds = numRounds;
+    currentRound = 0;
     human = new Human(namePlayer);
     ai = new Ai(difficulty, AI_NAME);
     gameStarted = true;
@@ -59,6 +60,11 @@ public class Game {
     MessageCli.PRINT_OUTCOME_ROUND.printMessage(human.getName(), humanPoints);
     ai.wonPoints(aiPoints);
     MessageCli.PRINT_OUTCOME_ROUND.printMessage(ai.getName(), aiPoints);
+
+    if (currentRound == numRounds) {
+      gameStarted = false;
+      MessageCli.PRINT_END_GAME.printMessage();
+    }
   }
 
   public void showStats() {}
