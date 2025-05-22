@@ -21,7 +21,9 @@ public class Human extends Player {
         MessageCli.INVALID_HUMAN_INPUT.printMessage();
       }
       MessageCli.ASK_HUMAN_INPUT.printMessage();
-      String[] input = Utils.scanner.nextLine().trim().split(" ");
+
+      // Cleany split any amount of white space
+      String[] input = Utils.scanner.nextLine().trim().split("\\s+");
 
       // Check to see if the number of input arguments is valid
       if (input.length != 2) {
