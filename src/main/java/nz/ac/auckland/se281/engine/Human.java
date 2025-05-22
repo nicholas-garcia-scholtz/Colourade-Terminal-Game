@@ -16,6 +16,9 @@ public class Human extends Player {
       }
       MessageCli.ASK_HUMAN_INPUT.printMessage();
       String[] input = Utils.scanner.nextLine().trim().split(" ");
+      if (input.length != 2) {
+        continue;
+      }
       colour = Colour.fromInput(input[0]);
       guess = Colour.fromInput(input[1]);
     } while (colour == null || guess == null);

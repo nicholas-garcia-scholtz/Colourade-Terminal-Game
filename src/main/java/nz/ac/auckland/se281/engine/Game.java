@@ -6,7 +6,7 @@ import nz.ac.auckland.se281.cli.MessageCli;
 public class Game {
   public static String AI_NAME = "HAL-9000";
 
-  private Human human;
+  private Player human;
   private Player ai;
   private int numRounds;
   private int currentRound;
