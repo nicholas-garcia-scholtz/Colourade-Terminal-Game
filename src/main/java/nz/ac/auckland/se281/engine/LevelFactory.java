@@ -11,8 +11,8 @@ public class LevelFactory {
         return new Easy();
       case Difficulty.MEDIUM:
         return new Medium(stats);
-      default:
-        break;
+      case Difficulty.HARD:
+        return new Hard(stats);
     }
 
     return null;
