@@ -12,6 +12,7 @@ public class Game {
   private int numRounds;
   private int currentRound;
   private boolean gameStarted = false;
+  private GameStats stats;
 
   public Game() {}
 
@@ -20,6 +21,7 @@ public class Game {
     MessageCli.WELCOME_PLAYER.printMessage(namePlayer);
     this.numRounds = numRounds;
     currentRound = 0;
+    stats = new GameStats();
     human = new Human(namePlayer);
     ai = new Ai(difficulty, AI_NAME);
     gameStarted = true;
@@ -36,6 +38,7 @@ public class Game {
     MessageCli.START_ROUND.printMessage(currentRound, numRounds);
     human.play();
     ai.play();
+    stats.addHumanColour(human.getColour());
 
     if (currentRound % 3 == 0) {
       Colour powerColour = Colour.getRandomColourForPowerColour();
@@ -63,6 +66,7 @@ public class Game {
 
     if (currentRound == numRounds) {
       gameStarted = false;
+      stats.clearColourHistory();
       MessageCli.PRINT_END_GAME.printMessage();
     }
   }
