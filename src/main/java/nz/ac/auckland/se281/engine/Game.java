@@ -25,6 +25,7 @@ public class Game {
   }
 
   public void play() {
+    int points = 1;
     if (!gameStarted) {
       MessageCli.GAME_NOT_STARTED.printMessage();
       return;
@@ -37,6 +38,21 @@ public class Game {
     if (currentRound % 3 == 0) {
       Colour powerColour = Colour.getRandomColourForPowerColour();
       MessageCli.PRINT_POWER_COLOUR.printMessage(powerColour);
+      points = 3;
+    }
+
+    if (ai.getColour() == human.getGuess()) {
+      human.wonPoints(points);
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage(human.getName(), points);
+    } else {
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage(human.getName(), 0);
+    }
+
+    if (human.getColour() == ai.getGuess()) {
+      ai.wonPoints(points);
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage(ai.getName(), points);
+    } else {
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage(ai.getName(), 0);
     }
   }
 
