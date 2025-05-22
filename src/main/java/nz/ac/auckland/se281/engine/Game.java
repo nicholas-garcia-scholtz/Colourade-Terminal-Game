@@ -6,7 +6,13 @@ import nz.ac.auckland.se281.cli.MessageCli;
 public class Game {
   public static String AI_NAME = "HAL-9000";
 
-  public Game() {}
+  private Player human;
+  private Player ai;
+
+  public Game() {
+    human = new Human();
+    ai = new Ai();
+  }
 
   public void newGame(Difficulty difficulty, int numRounds, String[] options) {
     String namePlayer = options[0];
@@ -18,7 +24,9 @@ public class Game {
     }
   }
 
-  public void play() {}
+  public void play() {
+    human.play();
+  }
 
   public void showStats() {}
 }
