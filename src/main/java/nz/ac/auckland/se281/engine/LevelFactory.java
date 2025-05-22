@@ -7,7 +7,7 @@ public class LevelFactory {
   public static Level createLevel(Difficulty difficulty) {
 
     switch (difficulty) {
-      case EASY:
+      case Difficulty.EASY:
         return new Easy();
       default:
         break;

@@ -32,6 +32,7 @@ public class Game {
     currentRound++;
     MessageCli.START_ROUND.printMessage(currentRound, numRounds);
     human.play();
+    ai.play();
 
     if (currentRound % 3 == 0) {
       Colour powerColour = Colour.getRandomColourForPowerColour();
