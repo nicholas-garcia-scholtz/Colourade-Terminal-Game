@@ -2,6 +2,7 @@ package nz.ac.auckland.se281.engine;
 
 public class Hard implements Level {
   private GameStats stats;
+  private Strategy strat;
 
   public Hard(GameStats stats) {
     this.stats = stats;
@@ -9,15 +10,24 @@ public class Hard implements Level {
 
   @Override
   public Strategy decideStrategy() {
-    if (stats.getHumanColourHistorySize() <= 2) {
+    if (stats.getHumanColourHistorySize() <= 1) {
       // Rounds 1 and 2
       return new RandomStrategy();
     }
-    if (stats.getHumanColourHistorySize() == 3) {
+    if (stats.getHumanColourHistorySize() == 2) {
       // Round 3
-      return new LeastUsedColourStrategy(stats);
+      strat = new LeastUsedColourStrategy(stats);
+      return strat;
     }
+
     // Round 4 onwards
-    throw new UnsupportedOperationException("Unimplemented method 'decideStrategy'");
+    if (stats.getAiWonPoints()) {
+      // Ai won so use same strategy
+      return strat;
+    }
+    // Ai lost so switch to other strategy
+    if (strat instanceof LeastUsedColourStrategy) strat = new AvoidLastColourStrategy(stats);
+    if (strat instanceof AvoidLastColourStrategy) strat = new LeastUsedColourStrategy(stats);
+    return strat;
   }
 }

@@ -10,14 +10,18 @@ public class GameStats {
   private int greenCount = 0;
   private int blueCount = 0;
   private int yellowCount = 0;
+  private boolean aiWon = false;
 
   public Colour getLastColour() {
     return humanColourHistory.get(humanColourHistory.size() - 1);
   }
 
-  public boolean aiWonPoints(int points) {
-    if (points == 0) return false;
-    return true;
+  public void aiWonPoints(int points) {
+    aiWon = (points > 0);
+  }
+
+  public boolean getAiWonPoints() {
+    return aiWon;
   }
 
   public void clearColourHistory() {
