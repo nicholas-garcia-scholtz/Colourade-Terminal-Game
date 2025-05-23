@@ -5,6 +5,6 @@ public class EasyLevel implements Level {
   @Override
   public Strategy decideStrategy() {
     // Return a random strategy
-    return new Random();
+    return new RandomStrategy();
   }
 }

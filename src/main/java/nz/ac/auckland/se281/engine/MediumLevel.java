@@ -11,8 +11,8 @@ public class MediumLevel implements Level {
   public Strategy decideStrategy() {
     if (stats.getHumanColourHistorySize() == 0) {
       // First round so no human inputs in this game yet
-      return new Random();
+      return new RandomStrategy();
     }
-    return new AvoidLast(stats);
+    return new AvoidLastStrategy(stats);
   }
 }

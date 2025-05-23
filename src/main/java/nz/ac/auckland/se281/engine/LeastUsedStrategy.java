@@ -2,10 +2,10 @@ package nz.ac.auckland.se281.engine;
 
 import nz.ac.auckland.se281.model.Colour;
 
-public class LeastUsed implements Strategy {
+public class LeastUsedStrategy implements Strategy {
   private GameStats stats;
 
-  public LeastUsed(GameStats stats) {
+  public LeastUsedStrategy(GameStats stats) {
     this.stats = stats;
   }
 

@@ -12,11 +12,11 @@ public class HardLevel implements Level {
   public Strategy decideStrategy() {
     if (stats.getHumanColourHistorySize() <= 1) {
       // Rounds 1 and 2
-      return new Random();
+      return new RandomStrategy();
     }
     if (stats.getHumanColourHistorySize() == 2) {
       // Round 3
-      strat = new LeastUsed(stats);
+      strat = new LeastUsedStrategy(stats);
       return strat;
     }
 
@@ -26,10 +26,10 @@ public class HardLevel implements Level {
       return strat;
     }
     // Ai lost so switch to other strategy
-    if (strat instanceof LeastUsed) {
-      strat = new AvoidLast(stats);
+    if (strat instanceof LeastUsedStrategy) {
+      strat = new AvoidLastStrategy(stats);
     } else {
-      strat = new LeastUsed(stats);
+      strat = new LeastUsedStrategy(stats);
     }
     return strat;
   }

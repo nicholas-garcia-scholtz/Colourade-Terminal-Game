@@ -2,10 +2,10 @@ package nz.ac.auckland.se281.engine;
 
 import nz.ac.auckland.se281.model.Colour;
 
-public class AvoidLast implements Strategy {
+public class AvoidLastStrategy implements Strategy {
   private GameStats stats;
 
-  public AvoidLast(GameStats stats) {
+  public AvoidLastStrategy(GameStats stats) {
     this.stats = stats;
   }
 
