@@ -6,15 +6,17 @@ public class LevelFactory {
 
   public static Level createLevel(Difficulty difficulty, GameStats stats) {
 
+    // Create the Appropriate difficulty level
     switch (difficulty) {
       case Difficulty.EASY:
-        return new Easy();
+        return new EasyLevel();
       case Difficulty.MEDIUM:
-        return new Medium(stats);
+        return new MediumLevel(stats);
       case Difficulty.HARD:
-        return new Hard(stats);
+        return new HardLevel(stats);
     }
 
+    // Not a difficulty level implemented yet
     return null;
   }
 }

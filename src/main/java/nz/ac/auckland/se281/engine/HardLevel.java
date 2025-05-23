@@ -1,10 +1,10 @@
 package nz.ac.auckland.se281.engine;
 
-public class Hard implements Level {
+public class HardLevel implements Level {
   private GameStats stats;
   private Strategy strat;
 
-  public Hard(GameStats stats) {
+  public HardLevel(GameStats stats) {
     this.stats = stats;
   }
 
@@ -12,11 +12,11 @@ public class Hard implements Level {
   public Strategy decideStrategy() {
     if (stats.getHumanColourHistorySize() <= 1) {
       // Rounds 1 and 2
-      return new RandomStrategy();
+      return new Random();
     }
     if (stats.getHumanColourHistorySize() == 2) {
       // Round 3
-      strat = new LeastUsedColourStrategy(stats);
+      strat = new LeastUsed(stats);
       return strat;
     }
 
@@ -26,10 +26,10 @@ public class Hard implements Level {
       return strat;
     }
     // Ai lost so switch to other strategy
-    if (strat instanceof LeastUsedColourStrategy) {
-      strat = new AvoidLastColourStrategy(stats);
+    if (strat instanceof LeastUsed) {
+      strat = new AvoidLast(stats);
     } else {
-      strat = new LeastUsedColourStrategy(stats);
+      strat = new LeastUsed(stats);
     }
     return strat;
   }
